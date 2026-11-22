@@ -1,0 +1,32 @@
+Software para Gerenciamento de Petshop - Parte 02
+Programação de Sistemas Web - UEM
+
+Link do sistema hospedado:
+[a preencher após a publicação na Vercel]
+
+Ambiente(s) de desenvolvimento:
+[a preencher]
+
+Servidor web:
+Vercel, com o runtime da comunidade vercel-php (versão 0.9.0, PHP 8.5),
+configurado no arquivo vercel.json.
+
+Sistema gerenciador de banco de dados:
+PostgreSQL, hospedado no Supabase. Acesso pelo PHP com PDO (driver pgsql).
+
+Framework(s):
+Bootstrap 5.3.3 (carregado via CDN).
+
+Biblioteca(s):
+Nenhuma além do Bootstrap.
+
+Instruções de instalação:
+[a preencher]
+
+Instruções de execução:
+[a preencher]
+
+Variáveis de ambiente:
+A senha do banco não fica no código. A conexão (api/conexao.php) lê os
+dados pela função getenv(), a partir destas variáveis cadastradas na Vercel:
+DB_HOST, DB_PORTA, DB_NOME, DB_USUARIO e DB_SENHA.

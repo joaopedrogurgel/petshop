@@ -1,0 +1,101 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+require_once("conexao.php");
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastrar Atendimento - Petshop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Petshop</a>
+      <a class="nav-link text-white" href="/index.html">Início</a>
+      <a class="nav-link text-white" href="/pages/cliente/cadastro.html">Clientes</a>
+      <a class="nav-link text-white" href="/pages/funcionario/cadastro.html">Funcionários</a>
+      <a class="nav-link text-white" href="/pages/animal/cadastro.html">Animais</a>
+      <a class="nav-link text-white" href="/api/atendimento_cadastro.php">Atendimentos</a>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <h1>Cadastrar Atendimento</h1>
+
+    <p>
+      <a href="/api/atendimento_cadastro.php">Cadastro</a>
+      <a href="/pages/atendimento/consulta.html">Consulta</a>
+      <a href="/pages/atendimento/alteracao.html">Alteração</a>
+      <a href="/pages/atendimento/remocao.html">Remoção</a>
+      <a href="/api/atendimento_relatorio.php">Relatório</a>
+    </p>
+
+    <?php
+    echo "<form action='/api/atendimento_cadastrar.php' method='post' onsubmit='return validarAtendimento()'>";
+    echo "<div class='mb-3'>";
+    echo "<label for='codigo' class='form-label'>Código</label>";
+    echo "<input type='text' class='form-control' id='codigo' name='codigo' required>";
+    echo "</div>";
+    echo "<div class='mb-3'>";
+    echo "<label for='data' class='form-label'>Data</label>";
+    echo "<input type='date' class='form-control' id='data' name='data' required>";
+    echo "</div>";
+    echo "<div class='mb-3'>";
+    echo "<label for='cliente' class='form-label'>Cliente</label>";
+    echo "<select class='form-control' id='cliente' name='cliente' required>";
+    $tabela = $db->query("select * from cliente");
+    $tabela->setFetchMode(PDO::FETCH_OBJ);
+    while ($linha = $tabela->fetch()) {
+      echo "<option value='" . htmlspecialchars($linha->cpf) . "'>" . htmlspecialchars($linha->nome) . " (CPF " . htmlspecialchars($linha->cpf) . ")" . "</option>";
+    }
+    echo "</select>";
+    echo "</div>";
+    echo "<div class='mb-3'>";
+    echo "<label for='animal' class='form-label'>Animal</label>";
+    echo "<select class='form-control' id='animal' name='animal' required>";
+    $tabela = $db->query("select * from animal");
+    $tabela->setFetchMode(PDO::FETCH_OBJ);
+    while ($linha = $tabela->fetch()) {
+      echo "<option value='" . htmlspecialchars($linha->nome) . "'>" . htmlspecialchars($linha->nome) . "</option>";
+    }
+    echo "</select>";
+    echo "</div>";
+    echo "<div class='mb-3'>";
+    echo "<label for='funcionario' class='form-label'>Funcionário</label>";
+    echo "<select class='form-control' id='funcionario' name='funcionario' required>";
+    $tabela = $db->query("select * from funcionario");
+    $tabela->setFetchMode(PDO::FETCH_OBJ);
+    while ($linha = $tabela->fetch()) {
+      echo "<option value='" . htmlspecialchars($linha->matricula) . "'>" . htmlspecialchars($linha->nome) . " (matrícula " . htmlspecialchars($linha->matricula) . ")" . "</option>";
+    }
+    echo "</select>";
+    echo "</div>";
+    echo "<button type='submit' class='btn btn-primary'>Cadastrar</button> ";
+    echo "<a href='/index.html' class='btn btn-secondary'>Voltar</a>";
+    echo "</form>";
+    ?>
+  </div>
+
+  <footer class="text-center mt-5">
+    <p>Programação de Sistemas Web - Software para Gerenciamento de Petshop</p>
+  </footer>
+
+  <script>
+    function validarAtendimento() {
+      var codigo = document.getElementById("codigo").value;
+
+      if (codigo.length != 4) {
+        alert("O código deve ter 4 dígitos (ex.: 0001)!");
+        return false;
+      }
+      return true;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+body {
+  background-color: #f3eefc;
+}
+
+.navbar {
+  background-color: #9b7fd1;
+}
+
+h1, h2 {
+  color: #6a4fa3;
+}
+
+a {
+  color: #7a5cb8;
+  text-decoration: none;
+}
+
+p a {
+  margin-right: 15px;
+}
+
+.btn-primary {
+  background-color: #ebe4f6;
+  border-color: #6a4fa3;
+  color: #4a3478;
+}
+
+.btn-primary:hover {
+  background-color: #8466c0;
+  border-color: #6a4fa3;
+  color: #ffffff;
+}
+
+.table th {
+  background-color: #e3d9f7;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* Página inicial */
+.destaque {
+  background-color: #ffffff;
+  border-left: 6px solid #9b7fd1;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0px 4px 10px #e3d9f7;
+}
+
+.destaque p {
+  margin-bottom: 0;
+}
+
+.coluna {
+  margin-bottom: 24px;
+}
+
+.caixa {
+  background-color: #ffffff;
+  border: 1px solid #e3d9f7;
+  border-radius: 12px;
+  padding: 20px 20px 10px 20px;
+  height: 100%;
+  box-shadow: 0px 4px 10px #e3d9f7;
+  transition: box-shadow 0.3s;
+}
+
+.caixa:hover {
+  box-shadow: 0px 6px 16px #c9b8ec;
+}
+
+.caixa h2 {
+  font-size: 24px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e3d9f7;
+}
+
+.descricao {
+  color: #6c6480;
+  font-size: 15px;
+}
+
+.caixa p a {
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+footer {
+  border-top: 1px solid #e3d9f7;
+  padding-top: 16px;
+}
