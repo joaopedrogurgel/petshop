@@ -27,6 +27,7 @@ require_once("conexao.php");
     </p>
 
     <?php
+    $confirmando = false;
     if (isset($_POST["matricula"])) {
       $sql = $db->prepare("select * from funcionario where matricula = ?");
       $sql->execute(array($_POST["matricula"]));
@@ -47,6 +48,7 @@ require_once("conexao.php");
               echo "<p class='text-danger'>Falha ao remover o funcionário.</p>";
           }
           else {
+            $confirmando = true;
             echo "<p>Confira os dados antes de remover:</p>";
             echo "<table class='table table-bordered'>";
             echo "<tr><th>Nome</th><th>Matrícula</th><th>Qualificação</th><th>Descrição da função</th><th>Carga horária (h)</th></tr>";
@@ -60,7 +62,7 @@ require_once("conexao.php");
             echo "</table>";
             echo "<form action='/api/index.php?pagina=funcionario_remover&amp;confirmar=sim' method='post'>";
             echo "<button type='submit' name='matricula' value='" . htmlspecialchars($linha->matricula) . "' class='btn btn-danger'>Confirmar remoção</button> ";
-            echo "<a href='/pages/funcionario/remocao.html' class='btn btn-secondary'>Cancelar</a>";
+            echo "<a href='/api/index.php?pagina=funcionario_relatorio' class='btn btn-secondary'>Cancelar</a>";
             echo "</form>";
           }
         }
@@ -74,8 +76,12 @@ require_once("conexao.php");
     }
     ?>
 
-    <a href="/pages/funcionario/remocao.html" class="btn btn-primary">Nova remoção</a>
-    <a href="/index.html" class="btn btn-secondary">Voltar</a>
+    <?php
+    if ($confirmando == false) {
+      echo "<a href='/pages/funcionario/remocao.html' class='btn btn-primary'>Nova remoção</a> ";
+      echo "<a href='/index.html' class='btn btn-secondary'>Voltar</a>";
+    }
+    ?>
   </div>
 
   <?php require("rodape.php"); ?>

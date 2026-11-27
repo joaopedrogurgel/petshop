@@ -27,6 +27,7 @@ require_once("conexao.php");
     </p>
 
     <?php
+    $confirmando = false;
     if (isset($_POST["nome"])) {
       $sql = $db->prepare("select * from animal where nome = ?");
       $sql->execute(array($_POST["nome"]));
@@ -47,6 +48,7 @@ require_once("conexao.php");
               echo "<p class='text-danger'>Falha ao remover o animal.</p>";
           }
           else {
+            $confirmando = true;
             echo "<p>Confira os dados antes de remover:</p>";
             echo "<table class='table table-bordered'>";
             echo "<tr><th>Nome</th><th>Peso (kg)</th><th>Altura (cm)</th></tr>";
@@ -58,7 +60,7 @@ require_once("conexao.php");
             echo "</table>";
             echo "<form action='/api/index.php?pagina=animal_remover&amp;confirmar=sim' method='post'>";
             echo "<button type='submit' name='nome' value='" . htmlspecialchars($linha->nome) . "' class='btn btn-danger'>Confirmar remoção</button> ";
-            echo "<a href='/pages/animal/remocao.html' class='btn btn-secondary'>Cancelar</a>";
+            echo "<a href='/api/index.php?pagina=animal_relatorio' class='btn btn-secondary'>Cancelar</a>";
             echo "</form>";
           }
         }
@@ -72,8 +74,12 @@ require_once("conexao.php");
     }
     ?>
 
-    <a href="/pages/animal/remocao.html" class="btn btn-primary">Nova remoção</a>
-    <a href="/index.html" class="btn btn-secondary">Voltar</a>
+    <?php
+    if ($confirmando == false) {
+      echo "<a href='/pages/animal/remocao.html' class='btn btn-primary'>Nova remoção</a> ";
+      echo "<a href='/index.html' class='btn btn-secondary'>Voltar</a>";
+    }
+    ?>
   </div>
 
   <?php require("rodape.php"); ?>
