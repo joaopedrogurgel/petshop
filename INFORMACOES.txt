@@ -2,10 +2,11 @@ Software para Gerenciamento de Petshop - Parte 02
 Programação de Sistemas Web - UEM
 
 Link do sistema hospedado:
-[a preencher após a publicação na Vercel]
+https://petshop-ashy-eight.vercel.app
 
 Ambiente(s) de desenvolvimento:
-[a preencher]
+macOS. O banco de dados foi criado no Supabase e os testes foram feitos
+diretamente no sistema publicado na Vercel.
 
 Servidor web:
 Vercel, com o runtime da comunidade vercel-php (versão 0.9.0, PHP 8.5),
@@ -21,10 +22,15 @@ Biblioteca(s):
 Nenhuma além do Bootstrap.
 
 Instruções de instalação:
-[a preencher]
+1. Criar um banco PostgreSQL (no projeto foi usado o Supabase).
+2. Importar o repositório do GitHub na Vercel.
+3. Cadastrar na Vercel as variáveis de ambiente listadas abaixo.
+4. Após o deploy, acessar /api/index.php?pagina=criar_tabelas uma única vez
+   para criar as tabelas cliente, funcionario, animal e atendimento.
 
 Instruções de execução:
-[a preencher]
+Acessar o link do sistema hospedado em um navegador. Não é necessário
+instalar nada para usar o sistema.
 
 Variáveis de ambiente:
 A senha do banco não fica no código. A conexão (api/conexao.php) lê os
