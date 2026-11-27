@@ -55,11 +55,11 @@ require_once("conexao.php");
         echo "</table>";
       }
       else {
-        echo "<p>Nenhum funcionário encontrado com a matrícula " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum funcionário encontrado com a matrícula " . htmlspecialchars($_GET["busca"]) . ".</p>";
       }
     }
     else {
-      echo "<p>Informe a matrícula na página de consulta.</p>";
+      echo "<p class='text-danger'>Informe a matrícula na página de consulta.</p>";
     }
     ?>
 

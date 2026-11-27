@@ -58,11 +58,17 @@ require_once("conexao.php");
           echo "</tr>";
           $total++;
         }
+        if ($total == 0) {
+          echo "<tr><td colspan='3'>Nenhum animal cadastrado.</td></tr>";
+        }
         ?>
       </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total: <?php echo $total; ?> animais</td>
+        </tr>
+      </tfoot>
     </table>
-
-    <p>Total: <?php echo $total; ?> animais</p>
 
     <button class="btn btn-primary" onclick="window.print()">Imprimir</button>
     <a href="/index.html" class="btn btn-secondary">Voltar</a>

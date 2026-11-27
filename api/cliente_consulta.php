@@ -55,11 +55,11 @@ require_once("conexao.php");
         echo "</table>";
       }
       else {
-        echo "<p>Nenhum cliente encontrado com o CPF " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum cliente encontrado com o CPF " . htmlspecialchars($_GET["busca"]) . ".</p>";
       }
     }
     else {
-      echo "<p>Informe o CPF na página de consulta.</p>";
+      echo "<p class='text-danger'>Informe o CPF na página de consulta.</p>";
     }
     ?>
 

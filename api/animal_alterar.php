@@ -40,12 +40,12 @@ require_once("conexao.php");
       $sql = $db->prepare("update animal set peso = ?, altura = ? where nome = ?");
       $res = $sql->execute(array($_POST["peso"], $_POST["altura"], $_POST["nome"]));
       if ($res)
-        echo "<p>Animal " . htmlspecialchars($_POST["nome"]) . " alterado com sucesso!</p>";
+        echo "<p class='text-success'>Animal " . htmlspecialchars($_POST["nome"]) . " alterado com sucesso!</p>";
       else
-        echo "<p>Falha ao alterar o animal.</p>";
+        echo "<p class='text-danger'>Falha ao alterar o animal.</p>";
     }
     else {
-      echo "<p>Nenhum dado recebido do formulário.</p>";
+      echo "<p class='text-danger'>Nenhum dado recebido do formulário.</p>";
     }
     ?>
 

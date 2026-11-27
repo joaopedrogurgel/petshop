@@ -36,48 +36,69 @@ require_once("conexao.php");
     </p>
 
     <?php
-    echo "<form action='/api/index.php' method='post' onsubmit='return validarAtendimento()'>";
-    echo "<div class='mb-3'>";
-    echo "<label for='codigo' class='form-label'>Código</label>";
-    echo "<input type='text' class='form-control' id='codigo' name='codigo' pattern='[0-9]{4}' placeholder='4 dígitos (ex.: 0001)' required>";
-    echo "</div>";
-    echo "<div class='mb-3'>";
-    echo "<label for='data' class='form-label'>Data</label>";
-    echo "<input type='date' class='form-control' id='data' name='data' required>";
-    echo "</div>";
-    echo "<div class='mb-3'>";
-    echo "<label for='cliente' class='form-label'>Cliente</label>";
-    echo "<select class='form-control' id='cliente' name='cliente' required>";
+    $falta = false;
     $tabela = $db->query("select * from cliente");
-    $tabela->setFetchMode(PDO::FETCH_OBJ);
-    while ($linha = $tabela->fetch()) {
-      echo "<option value='" . htmlspecialchars($linha->cpf) . "'>" . htmlspecialchars($linha->nome) . " (CPF " . htmlspecialchars($linha->cpf) . ")" . "</option>";
+    if (!$tabela->fetch()) {
+      echo "<p class='text-danger'>Nenhum cliente cadastrado. <a href='/pages/cliente/cadastro.html'>Cadastre antes de criar um atendimento.</a></p>";
+      $falta = true;
     }
-    echo "</select>";
-    echo "</div>";
-    echo "<div class='mb-3'>";
-    echo "<label for='animal' class='form-label'>Animal</label>";
-    echo "<select class='form-control' id='animal' name='animal' required>";
     $tabela = $db->query("select * from animal");
-    $tabela->setFetchMode(PDO::FETCH_OBJ);
-    while ($linha = $tabela->fetch()) {
-      echo "<option value='" . htmlspecialchars($linha->nome) . "'>" . htmlspecialchars($linha->nome) . "</option>";
+    if (!$tabela->fetch()) {
+      echo "<p class='text-danger'>Nenhum animal cadastrado. <a href='/pages/animal/cadastro.html'>Cadastre antes de criar um atendimento.</a></p>";
+      $falta = true;
     }
-    echo "</select>";
-    echo "</div>";
-    echo "<div class='mb-3'>";
-    echo "<label for='funcionario' class='form-label'>Funcionário</label>";
-    echo "<select class='form-control' id='funcionario' name='funcionario' required>";
     $tabela = $db->query("select * from funcionario");
-    $tabela->setFetchMode(PDO::FETCH_OBJ);
-    while ($linha = $tabela->fetch()) {
-      echo "<option value='" . htmlspecialchars($linha->matricula) . "'>" . htmlspecialchars($linha->nome) . " (matrícula " . htmlspecialchars($linha->matricula) . ")" . "</option>";
+    if (!$tabela->fetch()) {
+      echo "<p class='text-danger'>Nenhum funcionário cadastrado. <a href='/pages/funcionario/cadastro.html'>Cadastre antes de criar um atendimento.</a></p>";
+      $falta = true;
     }
-    echo "</select>";
-    echo "</div>";
-    echo "<button type='submit' name='pagina' value='atendimento_cadastrar' class='btn btn-primary'>Cadastrar</button> ";
-    echo "<a href='/index.html' class='btn btn-secondary'>Voltar</a>";
-    echo "</form>";
+    if ($falta) {
+      echo "<a href='/index.html' class='btn btn-secondary'>Voltar</a>";
+    }
+    else {
+      echo "<form action='/api/index.php' method='post' onsubmit='return validarAtendimento()'>";
+      echo "<div class='mb-3'>";
+      echo "<label for='codigo' class='form-label'>Código</label>";
+      echo "<input type='text' class='form-control' id='codigo' name='codigo' pattern='[0-9]{4}' placeholder='4 dígitos (ex.: 0001)' required>";
+      echo "</div>";
+      echo "<div class='mb-3'>";
+      echo "<label for='data' class='form-label'>Data</label>";
+      echo "<input type='date' class='form-control' id='data' name='data' required>";
+      echo "</div>";
+      echo "<div class='mb-3'>";
+      echo "<label for='cliente' class='form-label'>Cliente</label>";
+      echo "<select class='form-control' id='cliente' name='cliente' required>";
+      $tabela = $db->query("select * from cliente");
+      $tabela->setFetchMode(PDO::FETCH_OBJ);
+      while ($linha = $tabela->fetch()) {
+        echo "<option value='" . htmlspecialchars($linha->cpf) . "'>" . htmlspecialchars($linha->nome) . " (CPF " . htmlspecialchars($linha->cpf) . ")" . "</option>";
+      }
+      echo "</select>";
+      echo "</div>";
+      echo "<div class='mb-3'>";
+      echo "<label for='animal' class='form-label'>Animal</label>";
+      echo "<select class='form-control' id='animal' name='animal' required>";
+      $tabela = $db->query("select * from animal");
+      $tabela->setFetchMode(PDO::FETCH_OBJ);
+      while ($linha = $tabela->fetch()) {
+        echo "<option value='" . htmlspecialchars($linha->nome) . "'>" . htmlspecialchars($linha->nome) . "</option>";
+      }
+      echo "</select>";
+      echo "</div>";
+      echo "<div class='mb-3'>";
+      echo "<label for='funcionario' class='form-label'>Funcionário</label>";
+      echo "<select class='form-control' id='funcionario' name='funcionario' required>";
+      $tabela = $db->query("select * from funcionario");
+      $tabela->setFetchMode(PDO::FETCH_OBJ);
+      while ($linha = $tabela->fetch()) {
+        echo "<option value='" . htmlspecialchars($linha->matricula) . "'>" . htmlspecialchars($linha->nome) . " (matrícula " . htmlspecialchars($linha->matricula) . ")" . "</option>";
+      }
+      echo "</select>";
+      echo "</div>";
+      echo "<button type='submit' name='pagina' value='atendimento_cadastrar' class='btn btn-primary'>Cadastrar</button> ";
+      echo "<a href='/index.html' class='btn btn-secondary'>Voltar</a>";
+      echo "</form>";
+    }
     ?>
   </div>
 

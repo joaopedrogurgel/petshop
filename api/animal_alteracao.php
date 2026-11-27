@@ -59,12 +59,12 @@ require_once("conexao.php");
         echo "</form>";
       }
       else {
-        echo "<p>Nenhum animal encontrado com o nome " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum animal encontrado com o nome " . htmlspecialchars($_GET["busca"]) . ".</p>";
         echo "<a href='/pages/animal/alteracao.html' class='btn btn-secondary'>Voltar</a>";
       }
     }
     else {
-      echo "<p>Informe o nome na página de alteração.</p>";
+      echo "<p class='text-danger'>Informe o nome na página de alteração.</p>";
     }
     ?>
   </div>

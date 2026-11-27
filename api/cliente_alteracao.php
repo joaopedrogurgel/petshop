@@ -67,12 +67,12 @@ require_once("conexao.php");
         echo "</form>";
       }
       else {
-        echo "<p>Nenhum cliente encontrado com o CPF " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum cliente encontrado com o CPF " . htmlspecialchars($_GET["busca"]) . ".</p>";
         echo "<a href='/pages/cliente/alteracao.html' class='btn btn-secondary'>Voltar</a>";
       }
     }
     else {
-      echo "<p>Informe o CPF na página de alteração.</p>";
+      echo "<p class='text-danger'>Informe o CPF na página de alteração.</p>";
     }
     ?>
   </div>

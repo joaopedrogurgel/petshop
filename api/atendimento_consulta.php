@@ -55,11 +55,11 @@ require_once("conexao.php");
         echo "</table>";
       }
       else {
-        echo "<p>Nenhum atendimento encontrado com o código " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum atendimento encontrado com o código " . htmlspecialchars($_GET["busca"]) . ".</p>";
       }
     }
     else {
-      echo "<p>Informe o código na página de consulta.</p>";
+      echo "<p class='text-danger'>Informe o código na página de consulta.</p>";
     }
     ?>
 

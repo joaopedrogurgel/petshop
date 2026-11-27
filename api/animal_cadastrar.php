@@ -40,19 +40,19 @@ require_once("conexao.php");
       $sql = $db->prepare("select * from animal where nome = ?");
       $sql->execute(array($_POST["nome"]));
       if ($sql->fetch()) {
-        echo "<p>Já existe um animal cadastrado com o nome " . htmlspecialchars($_POST["nome"]) . ".</p>";
+        echo "<p class='text-danger'>Já existe um animal cadastrado com o nome " . htmlspecialchars($_POST["nome"]) . ".</p>";
       }
       else {
         $sql = $db->prepare("insert into animal (nome, peso, altura) values (?, ?, ?)");
         $res = $sql->execute(array($_POST["nome"], $_POST["peso"], $_POST["altura"]));
         if ($res)
-          echo "<p>Animal " . htmlspecialchars($_POST["nome"]) . " cadastrado com sucesso!</p>";
+          echo "<p class='text-success'>Animal " . htmlspecialchars($_POST["nome"]) . " cadastrado com sucesso!</p>";
         else
-          echo "<p>Falha ao cadastrar o animal.</p>";
+          echo "<p class='text-danger'>Falha ao cadastrar o animal.</p>";
       }
     }
     else {
-      echo "<p>Nenhum dado recebido do formulário.</p>";
+      echo "<p class='text-danger'>Nenhum dado recebido do formulário.</p>";
     }
     ?>
 

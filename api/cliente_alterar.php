@@ -40,12 +40,12 @@ require_once("conexao.php");
       $sql = $db->prepare("update cliente set nome = ?, telefone = ?, email = ?, rg = ? where cpf = ?");
       $res = $sql->execute(array($_POST["nome"], $_POST["telefone"], $_POST["email"], $_POST["rg"], $_POST["cpf"]));
       if ($res)
-        echo "<p>Cliente " . htmlspecialchars($_POST["nome"]) . " alterado com sucesso!</p>";
+        echo "<p class='text-success'>Cliente " . htmlspecialchars($_POST["nome"]) . " alterado com sucesso!</p>";
       else
-        echo "<p>Falha ao alterar o cliente.</p>";
+        echo "<p class='text-danger'>Falha ao alterar o cliente.</p>";
     }
     else {
-      echo "<p>Nenhum dado recebido do formulário.</p>";
+      echo "<p class='text-danger'>Nenhum dado recebido do formulário.</p>";
     }
     ?>
 
