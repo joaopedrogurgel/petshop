@@ -37,12 +37,19 @@ require_once("conexao.php");
 
     <?php
     if (isset($_POST["cpf"])) {
-      $sql = $db->prepare("insert into cliente (cpf, nome, telefone, email, rg) values (?, ?, ?, ?, ?)");
-      $res = $sql->execute(array($_POST["cpf"], $_POST["nome"], $_POST["telefone"], $_POST["email"], $_POST["rg"]));
-      if ($res)
-        echo "<p>Cliente " . htmlspecialchars($_POST["nome"]) . " cadastrado com sucesso!</p>";
-      else
-        echo "<p>Falha ao cadastrar o cliente.</p>";
+      $sql = $db->prepare("select * from cliente where cpf = ?");
+      $sql->execute(array($_POST["cpf"]));
+      if ($sql->fetch()) {
+        echo "<p>Já existe um cliente cadastrado com o CPF " . htmlspecialchars($_POST["cpf"]) . ".</p>";
+      }
+      else {
+        $sql = $db->prepare("insert into cliente (cpf, nome, telefone, email, rg) values (?, ?, ?, ?, ?)");
+        $res = $sql->execute(array($_POST["cpf"], $_POST["nome"], $_POST["telefone"], $_POST["email"], $_POST["rg"]));
+        if ($res)
+          echo "<p>Cliente " . htmlspecialchars($_POST["nome"]) . " cadastrado com sucesso!</p>";
+        else
+          echo "<p>Falha ao cadastrar o cliente.</p>";
+      }
     }
     else {
       echo "<p>Nenhum dado recebido do formulário.</p>";

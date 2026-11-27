@@ -37,12 +37,19 @@ require_once("conexao.php");
 
     <?php
     if (isset($_POST["matricula"])) {
-      $sql = $db->prepare("insert into funcionario (matricula, nome, qualificacao, descricao, carga_horaria) values (?, ?, ?, ?, ?)");
-      $res = $sql->execute(array($_POST["matricula"], $_POST["nome"], $_POST["qualificacao"], $_POST["descricao"], $_POST["carga"]));
-      if ($res)
-        echo "<p>Funcionário " . htmlspecialchars($_POST["nome"]) . " cadastrado com sucesso!</p>";
-      else
-        echo "<p>Falha ao cadastrar o funcionário.</p>";
+      $sql = $db->prepare("select * from funcionario where matricula = ?");
+      $sql->execute(array($_POST["matricula"]));
+      if ($sql->fetch()) {
+        echo "<p>Já existe um funcionário cadastrado com a matrícula " . htmlspecialchars($_POST["matricula"]) . ".</p>";
+      }
+      else {
+        $sql = $db->prepare("insert into funcionario (matricula, nome, qualificacao, descricao, carga_horaria) values (?, ?, ?, ?, ?)");
+        $res = $sql->execute(array($_POST["matricula"], $_POST["nome"], $_POST["qualificacao"], $_POST["descricao"], $_POST["carga"]));
+        if ($res)
+          echo "<p>Funcionário " . htmlspecialchars($_POST["nome"]) . " cadastrado com sucesso!</p>";
+        else
+          echo "<p>Falha ao cadastrar o funcionário.</p>";
+      }
     }
     else {
       echo "<p>Nenhum dado recebido do formulário.</p>";
