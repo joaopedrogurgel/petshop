@@ -38,12 +38,29 @@ require_once("conexao.php");
           echo "<p class='text-danger'>O animal " . htmlspecialchars($linha->nome) . " possui atendimentos cadastrados e não pode ser removido.</p>";
         }
         else {
-          $sql = $db->prepare("delete from animal where nome = ?");
-          $res = $sql->execute(array($_POST["nome"]));
-          if ($res)
-            echo "<p class='text-success'>Animal " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
-          else
-            echo "<p class='text-danger'>Falha ao remover o animal.</p>";
+          if (isset($_REQUEST["confirmar"])) {
+            $sql = $db->prepare("delete from animal where nome = ?");
+            $res = $sql->execute(array($_POST["nome"]));
+            if ($res)
+              echo "<p class='text-success'>Animal " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
+            else
+              echo "<p class='text-danger'>Falha ao remover o animal.</p>";
+          }
+          else {
+            echo "<p>Confira os dados antes de remover:</p>";
+            echo "<table class='table table-bordered'>";
+            echo "<tr><th>Nome</th><th>Peso (kg)</th><th>Altura (cm)</th></tr>";
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($linha->nome) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->peso) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->altura) . "</td>";
+            echo "</tr>";
+            echo "</table>";
+            echo "<form action='/api/index.php?pagina=animal_remover&amp;confirmar=sim' method='post'>";
+            echo "<button type='submit' name='nome' value='" . htmlspecialchars($linha->nome) . "' class='btn btn-danger'>Confirmar remoção</button> ";
+            echo "<a href='/pages/animal/remocao.html' class='btn btn-secondary'>Cancelar</a>";
+            echo "</form>";
+          }
         }
       }
       else {

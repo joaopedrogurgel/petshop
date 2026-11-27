@@ -38,12 +38,31 @@ require_once("conexao.php");
           echo "<p class='text-danger'>O funcionário " . htmlspecialchars($linha->nome) . " possui atendimentos cadastrados e não pode ser removido.</p>";
         }
         else {
-          $sql = $db->prepare("delete from funcionario where matricula = ?");
-          $res = $sql->execute(array($_POST["matricula"]));
-          if ($res)
-            echo "<p class='text-success'>Funcionário " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
-          else
-            echo "<p class='text-danger'>Falha ao remover o funcionário.</p>";
+          if (isset($_REQUEST["confirmar"])) {
+            $sql = $db->prepare("delete from funcionario where matricula = ?");
+            $res = $sql->execute(array($_POST["matricula"]));
+            if ($res)
+              echo "<p class='text-success'>Funcionário " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
+            else
+              echo "<p class='text-danger'>Falha ao remover o funcionário.</p>";
+          }
+          else {
+            echo "<p>Confira os dados antes de remover:</p>";
+            echo "<table class='table table-bordered'>";
+            echo "<tr><th>Nome</th><th>Matrícula</th><th>Qualificação</th><th>Descrição da função</th><th>Carga horária (h)</th></tr>";
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($linha->nome) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->matricula) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->qualificacao) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->descricao) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->carga_horaria) . "</td>";
+            echo "</tr>";
+            echo "</table>";
+            echo "<form action='/api/index.php?pagina=funcionario_remover&amp;confirmar=sim' method='post'>";
+            echo "<button type='submit' name='matricula' value='" . htmlspecialchars($linha->matricula) . "' class='btn btn-danger'>Confirmar remoção</button> ";
+            echo "<a href='/pages/funcionario/remocao.html' class='btn btn-secondary'>Cancelar</a>";
+            echo "</form>";
+          }
         }
       }
       else {

@@ -27,9 +27,9 @@ require_once("conexao.php");
     </p>
 
     <?php
-    if (isset($_GET["busca"])) {
+    if (isset($_REQUEST["busca"])) {
       $sql = $db->prepare("select * from animal where nome = ?");
-      $sql->execute(array($_GET["busca"]));
+      $sql->execute(array($_REQUEST["busca"]));
       $sql->setFetchMode(PDO::FETCH_OBJ);
       if ($linha = $sql->fetch()) {
         echo "<form action='/api/index.php' method='post' onsubmit='return validarAnimal()'>";
@@ -50,7 +50,7 @@ require_once("conexao.php");
         echo "</form>";
       }
       else {
-        echo "<p class='text-danger'>Nenhum animal encontrado com o nome " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum animal encontrado com o nome " . htmlspecialchars($_REQUEST["busca"]) . ".</p>";
         echo "<a href='/pages/animal/alteracao.html' class='btn btn-secondary'>Voltar</a>";
       }
     }

@@ -34,6 +34,8 @@ require_once("conexao.php");
           <th>Nome</th>
           <th>Peso (kg)</th>
           <th>Altura (cm)</th>
+          <th>Alterar</th>
+          <th>Remover</th>
         </tr>
       </thead>
       <tbody>
@@ -46,17 +48,23 @@ require_once("conexao.php");
           echo "<td>" . htmlspecialchars($linha->nome) . "</td>";
           echo "<td>" . htmlspecialchars($linha->peso) . "</td>";
           echo "<td>" . htmlspecialchars($linha->altura) . "</td>";
+          echo "<td><form action='/api/index.php?pagina=animal_alteracao' method='post'>";
+          echo "<button type='submit' name='busca' value='" . htmlspecialchars($linha->nome) . "' class='btn btn-primary btn-sm'>Alterar</button>";
+          echo "</form></td>";
+          echo "<td><form action='/api/index.php?pagina=animal_remover' method='post'>";
+          echo "<button type='submit' name='nome' value='" . htmlspecialchars($linha->nome) . "' class='btn btn-danger btn-sm'>Remover</button>";
+          echo "</form></td>";
           echo "</tr>";
           $total++;
         }
         if ($total == 0) {
-          echo "<tr><td colspan='3'>Nenhum animal cadastrado.</td></tr>";
+          echo "<tr><td colspan='5'>Nenhum animal cadastrado.</td></tr>";
         }
         ?>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="3">Total: <?php if ($total == 1) echo "1 animal"; else echo $total . " animais"; ?></td>
+          <td colspan="5">Total: <?php if ($total == 1) echo "1 animal"; else echo $total . " animais"; ?></td>
         </tr>
       </tfoot>
     </table>

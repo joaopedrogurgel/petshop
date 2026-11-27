@@ -27,9 +27,9 @@ require_once("conexao.php");
     </p>
 
     <?php
-    if (isset($_GET["busca"])) {
+    if (isset($_REQUEST["busca"])) {
       $sql = $db->prepare("select * from atendimento where codigo = ?");
-      $sql->execute(array($_GET["busca"]));
+      $sql->execute(array($_REQUEST["busca"]));
       $sql->setFetchMode(PDO::FETCH_OBJ);
       if ($atendimento = $sql->fetch()) {
         echo "<form action='/api/index.php' method='post'>";
@@ -85,7 +85,7 @@ require_once("conexao.php");
         echo "</form>";
       }
       else {
-        echo "<p class='text-danger'>Nenhum atendimento encontrado com o código " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum atendimento encontrado com o código " . htmlspecialchars($_REQUEST["busca"]) . ".</p>";
         echo "<a href='/pages/atendimento/alteracao.html' class='btn btn-secondary'>Voltar</a>";
       }
     }

@@ -39,12 +39,31 @@ require_once("conexao.php");
           echo "<p class='text-danger'>O cliente " . htmlspecialchars($linha->nome) . " possui atendimentos cadastrados e não pode ser removido.</p>";
         }
         else {
-          $sql = $db->prepare("delete from cliente where cpf = ?");
-          $res = $sql->execute(array($_POST["cpf"]));
-          if ($res)
-            echo "<p class='text-success'>Cliente " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
-          else
-            echo "<p class='text-danger'>Falha ao remover o cliente.</p>";
+          if (isset($_REQUEST["confirmar"])) {
+            $sql = $db->prepare("delete from cliente where cpf = ?");
+            $res = $sql->execute(array($_POST["cpf"]));
+            if ($res)
+              echo "<p class='text-success'>Cliente " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
+            else
+              echo "<p class='text-danger'>Falha ao remover o cliente.</p>";
+          }
+          else {
+            echo "<p>Confira os dados antes de remover:</p>";
+            echo "<table class='table table-bordered'>";
+            echo "<tr><th>Nome</th><th>Telefone</th><th>E-mail</th><th>RG</th><th>CPF</th></tr>";
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($linha->nome) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->telefone) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->email) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->rg) . "</td>";
+            echo "<td>" . htmlspecialchars($linha->cpf) . "</td>";
+            echo "</tr>";
+            echo "</table>";
+            echo "<form action='/api/index.php?pagina=cliente_remover&amp;confirmar=sim' method='post'>";
+            echo "<button type='submit' name='cpf' value='" . htmlspecialchars($linha->cpf) . "' class='btn btn-danger'>Confirmar remoção</button> ";
+            echo "<a href='/pages/cliente/remocao.html' class='btn btn-secondary'>Cancelar</a>";
+            echo "</form>";
+          }
         }
       }
       else {
