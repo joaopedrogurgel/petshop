@@ -36,6 +36,8 @@ require_once("conexao.php");
           <th>Qualificação</th>
           <th>Descrição da função</th>
           <th>Carga horária (h)</th>
+          <th>Alterar</th>
+          <th>Remover</th>
         </tr>
       </thead>
       <tbody>
@@ -50,17 +52,23 @@ require_once("conexao.php");
           echo "<td>" . htmlspecialchars($linha->qualificacao) . "</td>";
           echo "<td>" . htmlspecialchars($linha->descricao) . "</td>";
           echo "<td>" . htmlspecialchars($linha->carga_horaria) . "</td>";
+          echo "<td><form action='/api/index.php?pagina=funcionario_alteracao' method='post'>";
+          echo "<button type='submit' name='busca' value='" . htmlspecialchars($linha->matricula) . "' class='btn btn-primary btn-sm'>Alterar</button>";
+          echo "</form></td>";
+          echo "<td><form action='/api/index.php?pagina=funcionario_remover' method='post'>";
+          echo "<button type='submit' name='matricula' value='" . htmlspecialchars($linha->matricula) . "' class='btn btn-danger btn-sm'>Remover</button>";
+          echo "</form></td>";
           echo "</tr>";
           $total++;
         }
         if ($total == 0) {
-          echo "<tr><td colspan='5'>Nenhum funcionário cadastrado.</td></tr>";
+          echo "<tr><td colspan='7'>Nenhum funcionário cadastrado.</td></tr>";
         }
         ?>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="5">Total: <?php if ($total == 1) echo "1 funcionário"; else echo $total . " funcionários"; ?></td>
+          <td colspan="7">Total: <?php if ($total == 1) echo "1 funcionário"; else echo $total . " funcionários"; ?></td>
         </tr>
       </tfoot>
     </table>

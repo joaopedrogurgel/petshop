@@ -36,6 +36,8 @@ require_once("conexao.php");
           <th>CPF do cliente</th>
           <th>Animal</th>
           <th>Matrícula do funcionário</th>
+          <th>Alterar</th>
+          <th>Remover</th>
         </tr>
       </thead>
       <tbody>
@@ -50,17 +52,23 @@ require_once("conexao.php");
           echo "<td>" . htmlspecialchars($linha->cpf_cliente) . "</td>";
           echo "<td>" . htmlspecialchars($linha->nome_animal) . "</td>";
           echo "<td>" . htmlspecialchars($linha->matricula_funcionario) . "</td>";
+          echo "<td><form action='/api/index.php?pagina=atendimento_alteracao' method='post'>";
+          echo "<button type='submit' name='busca' value='" . htmlspecialchars($linha->codigo) . "' class='btn btn-primary btn-sm'>Alterar</button>";
+          echo "</form></td>";
+          echo "<td><form action='/api/index.php?pagina=atendimento_remover' method='post'>";
+          echo "<button type='submit' name='codigo' value='" . htmlspecialchars($linha->codigo) . "' class='btn btn-danger btn-sm'>Remover</button>";
+          echo "</form></td>";
           echo "</tr>";
           $total++;
         }
         if ($total == 0) {
-          echo "<tr><td colspan='5'>Nenhum atendimento cadastrado.</td></tr>";
+          echo "<tr><td colspan='7'>Nenhum atendimento cadastrado.</td></tr>";
         }
         ?>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="5">Total: <?php if ($total == 1) echo "1 atendimento"; else echo $total . " atendimentos"; ?></td>
+          <td colspan="7">Total: <?php if ($total == 1) echo "1 atendimento"; else echo $total . " atendimentos"; ?></td>
         </tr>
       </tfoot>
     </table>

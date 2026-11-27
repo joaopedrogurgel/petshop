@@ -27,9 +27,9 @@ require_once("conexao.php");
     </p>
 
     <?php
-    if (isset($_GET["busca"])) {
+    if (isset($_REQUEST["busca"])) {
       $sql = $db->prepare("select * from funcionario where matricula = ?");
-      $sql->execute(array($_GET["busca"]));
+      $sql->execute(array($_REQUEST["busca"]));
       $sql->setFetchMode(PDO::FETCH_OBJ);
       if ($linha = $sql->fetch()) {
         echo "<form action='/api/index.php' method='post' onsubmit='return validarFuncionario()'>";
@@ -58,7 +58,7 @@ require_once("conexao.php");
         echo "</form>";
       }
       else {
-        echo "<p class='text-danger'>Nenhum funcionário encontrado com a matrícula " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum funcionário encontrado com a matrícula " . htmlspecialchars($_REQUEST["busca"]) . ".</p>";
         echo "<a href='/pages/funcionario/alteracao.html' class='btn btn-secondary'>Voltar</a>";
       }
     }

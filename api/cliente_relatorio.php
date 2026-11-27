@@ -36,6 +36,8 @@ require_once("conexao.php");
           <th>E-mail</th>
           <th>RG</th>
           <th>CPF</th>
+          <th>Alterar</th>
+          <th>Remover</th>
         </tr>
       </thead>
       <tbody>
@@ -50,17 +52,23 @@ require_once("conexao.php");
           echo "<td>" . htmlspecialchars($linha->email) . "</td>";
           echo "<td>" . htmlspecialchars($linha->rg) . "</td>";
           echo "<td>" . htmlspecialchars($linha->cpf) . "</td>";
+          echo "<td><form action='/api/index.php?pagina=cliente_alteracao' method='post'>";
+          echo "<button type='submit' name='busca' value='" . htmlspecialchars($linha->cpf) . "' class='btn btn-primary btn-sm'>Alterar</button>";
+          echo "</form></td>";
+          echo "<td><form action='/api/index.php?pagina=cliente_remover' method='post'>";
+          echo "<button type='submit' name='cpf' value='" . htmlspecialchars($linha->cpf) . "' class='btn btn-danger btn-sm'>Remover</button>";
+          echo "</form></td>";
           echo "</tr>";
           $total++;
         }
         if ($total == 0) {
-          echo "<tr><td colspan='5'>Nenhum cliente cadastrado.</td></tr>";
+          echo "<tr><td colspan='7'>Nenhum cliente cadastrado.</td></tr>";
         }
         ?>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="5">Total: <?php if ($total == 1) echo "1 cliente"; else echo $total . " clientes"; ?></td>
+          <td colspan="7">Total: <?php if ($total == 1) echo "1 cliente"; else echo $total . " clientes"; ?></td>
         </tr>
       </tfoot>
     </table>
