@@ -65,7 +65,7 @@ require_once("conexao.php");
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="3">Total: <?php echo $total; ?> animais</td>
+          <td colspan="3">Total: <?php if ($total == 1) echo "1 animal"; else echo $total . " animais"; ?></td>
         </tr>
       </tfoot>
     </table>

@@ -25,8 +25,9 @@ Instruções de instalação:
 1. Criar um banco PostgreSQL (no projeto foi usado o Supabase).
 2. Importar o repositório do GitHub na Vercel.
 3. Cadastrar na Vercel as variáveis de ambiente listadas abaixo.
-4. Após o deploy, acessar /api/index.php?pagina=criar_tabelas uma única vez
-   para criar as tabelas cliente, funcionario, animal e atendimento.
+4. Criar as tabelas cliente, funcionario, animal e atendimento executando,
+   no SQL Editor do Supabase, os comandos create table do arquivo
+   api/criar_tabelas.php.
 
 Instruções de execução:
 Acessar o link do sistema hospedado em um navegador. Não é necessário
