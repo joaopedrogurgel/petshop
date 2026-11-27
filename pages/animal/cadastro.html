@@ -34,15 +34,15 @@
     <form action="/api/index.php" method="post" onsubmit="return validarAnimal()">
       <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome" required>
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex.: Thor" required>
       </div>
       <div class="mb-3">
         <label for="peso" class="form-label">Peso (kg)</label>
-        <input type="number" class="form-control" id="peso" name="peso" step="0.01" min="0.01" required>
+        <input type="number" class="form-control" id="peso" name="peso" step="0.01" min="0.01" placeholder="Ex.: 12.5" required>
       </div>
       <div class="mb-3">
         <label for="altura" class="form-label">Altura (cm)</label>
-        <input type="number" class="form-control" id="altura" name="altura" step="0.01" min="0.01" required>
+        <input type="number" class="form-control" id="altura" name="altura" step="0.01" min="0.01" placeholder="Ex.: 45" required>
       </div>
       <button type="submit" name="pagina" value="animal_cadastrar" class="btn btn-primary">Cadastrar</button>
       <a href="../../index.html" class="btn btn-secondary">Voltar</a>
