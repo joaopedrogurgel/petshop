@@ -16,7 +16,7 @@
       <a class="nav-link text-white" href="../cliente/cadastro.html">Clientes</a>
       <a class="nav-link text-white" href="../funcionario/cadastro.html">Funcionários</a>
       <a class="nav-link text-white" href="../animal/cadastro.html">Animais</a>
-      <a class="nav-link text-white" href="/api/atendimento_cadastro.php">Atendimentos</a>
+      <a class="nav-link text-white" href="/api/index.php?pagina=atendimento_cadastro">Atendimentos</a>
     </div>
   </nav>
 
@@ -24,19 +24,19 @@
     <h1>Consultar Atendimento</h1>
 
     <p>
-      <a href="/api/atendimento_cadastro.php">Cadastro</a>
+      <a href="/api/index.php?pagina=atendimento_cadastro">Cadastro</a>
       <a href="consulta.html">Consulta</a>
       <a href="alteracao.html">Alteração</a>
       <a href="remocao.html">Remoção</a>
-      <a href="/api/atendimento_relatorio.php">Relatório</a>
+      <a href="/api/index.php?pagina=atendimento_relatorio">Relatório</a>
     </p>
 
-    <form action="/api/atendimento_consulta.php" method="get">
+    <form action="/api/index.php" method="get">
       <div class="mb-3">
         <label for="busca" class="form-label">Código do atendimento</label>
         <input type="text" class="form-control" id="busca" name="busca" required>
       </div>
-      <button type="submit" class="btn btn-primary">Consultar</button>
+      <button type="submit" name="pagina" value="atendimento_consulta" class="btn btn-primary">Consultar</button>
       <a href="../../index.html" class="btn btn-secondary">Voltar</a>
     </form>
   </div>

@@ -20,7 +20,7 @@ require_once("conexao.php");
       <a class="nav-link text-white" href="/pages/cliente/cadastro.html">Clientes</a>
       <a class="nav-link text-white" href="/pages/funcionario/cadastro.html">Funcionários</a>
       <a class="nav-link text-white" href="/pages/animal/cadastro.html">Animais</a>
-      <a class="nav-link text-white" href="/api/atendimento_cadastro.php">Atendimentos</a>
+      <a class="nav-link text-white" href="/api/index.php?pagina=atendimento_cadastro">Atendimentos</a>
     </div>
   </nav>
 
@@ -28,11 +28,11 @@ require_once("conexao.php");
     <h1>Relatório de Atendimentos</h1>
 
     <p>
-      <a href="/api/atendimento_cadastro.php">Cadastro</a>
+      <a href="/api/index.php?pagina=atendimento_cadastro">Cadastro</a>
       <a href="/pages/atendimento/consulta.html">Consulta</a>
       <a href="/pages/atendimento/alteracao.html">Alteração</a>
       <a href="/pages/atendimento/remocao.html">Remoção</a>
-      <a href="/api/atendimento_relatorio.php">Relatório</a>
+      <a href="/api/index.php?pagina=atendimento_relatorio">Relatório</a>
     </p>
 
     <p>Lista dos atendimentos realizados:</p>

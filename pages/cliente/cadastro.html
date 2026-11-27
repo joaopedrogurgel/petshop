@@ -16,7 +16,7 @@
       <a class="nav-link text-white" href="../cliente/cadastro.html">Clientes</a>
       <a class="nav-link text-white" href="../funcionario/cadastro.html">Funcionários</a>
       <a class="nav-link text-white" href="../animal/cadastro.html">Animais</a>
-      <a class="nav-link text-white" href="/api/atendimento_cadastro.php">Atendimentos</a>
+      <a class="nav-link text-white" href="/api/index.php?pagina=atendimento_cadastro">Atendimentos</a>
     </div>
   </nav>
 
@@ -28,10 +28,10 @@
       <a href="consulta.html">Consulta</a>
       <a href="alteracao.html">Alteração</a>
       <a href="remocao.html">Remoção</a>
-      <a href="/api/cliente_relatorio.php">Relatório</a>
+      <a href="/api/index.php?pagina=cliente_relatorio">Relatório</a>
     </p>
 
-    <form action="/api/cliente_cadastrar.php" method="post" onsubmit="return validarCliente()">
+    <form action="/api/index.php" method="post" onsubmit="return validarCliente()">
       <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -52,7 +52,7 @@
         <label for="cpf" class="form-label">CPF</label>
         <input type="text" class="form-control" id="cpf" name="cpf" required>
       </div>
-      <button type="submit" class="btn btn-primary">Cadastrar</button>
+      <button type="submit" name="pagina" value="cliente_cadastrar" class="btn btn-primary">Cadastrar</button>
       <a href="../../index.html" class="btn btn-secondary">Voltar</a>
     </form>
   </div>

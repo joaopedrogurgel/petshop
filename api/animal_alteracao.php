@@ -20,7 +20,7 @@ require_once("conexao.php");
       <a class="nav-link text-white" href="/pages/cliente/cadastro.html">Clientes</a>
       <a class="nav-link text-white" href="/pages/funcionario/cadastro.html">Funcionários</a>
       <a class="nav-link text-white" href="/pages/animal/cadastro.html">Animais</a>
-      <a class="nav-link text-white" href="/api/atendimento_cadastro.php">Atendimentos</a>
+      <a class="nav-link text-white" href="/api/index.php?pagina=atendimento_cadastro">Atendimentos</a>
     </div>
   </nav>
 
@@ -32,7 +32,7 @@ require_once("conexao.php");
       <a href="/pages/animal/consulta.html">Consulta</a>
       <a href="/pages/animal/alteracao.html">Alteração</a>
       <a href="/pages/animal/remocao.html">Remoção</a>
-      <a href="/api/animal_relatorio.php">Relatório</a>
+      <a href="/api/index.php?pagina=animal_relatorio">Relatório</a>
     </p>
 
     <?php
@@ -41,7 +41,7 @@ require_once("conexao.php");
       $sql->execute(array($_GET["busca"]));
       $sql->setFetchMode(PDO::FETCH_OBJ);
       if ($linha = $sql->fetch()) {
-        echo "<form action='/api/animal_alterar.php' method='post' onsubmit='return validarAnimal()'>";
+        echo "<form action='/api/index.php' method='post' onsubmit='return validarAnimal()'>";
         echo "<div class='mb-3'>";
         echo "<label for='nome' class='form-label'>Nome</label>";
         echo "<input type='text' class='form-control' id='nome' name='nome' value='" . htmlspecialchars($linha->nome) . "' readonly>";
@@ -54,7 +54,7 @@ require_once("conexao.php");
         echo "<label for='altura' class='form-label'>Altura (cm)</label>";
         echo "<input type='number' class='form-control' id='altura' name='altura' value='" . htmlspecialchars($linha->altura) . "' required>";
         echo "</div>";
-        echo "<button type='submit' class='btn btn-primary'>Salvar</button> ";
+        echo "<button type='submit' name='pagina' value='animal_alterar' class='btn btn-primary'>Salvar</button> ";
         echo "<a href='/pages/animal/alteracao.html' class='btn btn-secondary'>Voltar</a>";
         echo "</form>";
       }

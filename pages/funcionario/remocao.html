@@ -16,7 +16,7 @@
       <a class="nav-link text-white" href="../cliente/cadastro.html">Clientes</a>
       <a class="nav-link text-white" href="../funcionario/cadastro.html">Funcionários</a>
       <a class="nav-link text-white" href="../animal/cadastro.html">Animais</a>
-      <a class="nav-link text-white" href="/api/atendimento_cadastro.php">Atendimentos</a>
+      <a class="nav-link text-white" href="/api/index.php?pagina=atendimento_cadastro">Atendimentos</a>
     </div>
   </nav>
 
@@ -28,15 +28,15 @@
       <a href="consulta.html">Consulta</a>
       <a href="alteracao.html">Alteração</a>
       <a href="remocao.html">Remoção</a>
-      <a href="/api/funcionario_relatorio.php">Relatório</a>
+      <a href="/api/index.php?pagina=funcionario_relatorio">Relatório</a>
     </p>
 
-    <form action="/api/funcionario_remover.php" method="post">
+    <form action="/api/index.php" method="post">
       <div class="mb-3">
         <label for="matricula" class="form-label">Matrícula do funcionário</label>
         <input type="text" class="form-control" id="matricula" name="matricula" required>
       </div>
-      <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja remover?')">Remover</button>
+      <button type="submit" name="pagina" value="funcionario_remover" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja remover?')">Remover</button>
       <a href="../../index.html" class="btn btn-secondary">Voltar</a>
     </form>
   </div>

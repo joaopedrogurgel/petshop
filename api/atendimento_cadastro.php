@@ -20,7 +20,7 @@ require_once("conexao.php");
       <a class="nav-link text-white" href="/pages/cliente/cadastro.html">Clientes</a>
       <a class="nav-link text-white" href="/pages/funcionario/cadastro.html">Funcionários</a>
       <a class="nav-link text-white" href="/pages/animal/cadastro.html">Animais</a>
-      <a class="nav-link text-white" href="/api/atendimento_cadastro.php">Atendimentos</a>
+      <a class="nav-link text-white" href="/api/index.php?pagina=atendimento_cadastro">Atendimentos</a>
     </div>
   </nav>
 
@@ -28,15 +28,15 @@ require_once("conexao.php");
     <h1>Cadastrar Atendimento</h1>
 
     <p>
-      <a href="/api/atendimento_cadastro.php">Cadastro</a>
+      <a href="/api/index.php?pagina=atendimento_cadastro">Cadastro</a>
       <a href="/pages/atendimento/consulta.html">Consulta</a>
       <a href="/pages/atendimento/alteracao.html">Alteração</a>
       <a href="/pages/atendimento/remocao.html">Remoção</a>
-      <a href="/api/atendimento_relatorio.php">Relatório</a>
+      <a href="/api/index.php?pagina=atendimento_relatorio">Relatório</a>
     </p>
 
     <?php
-    echo "<form action='/api/atendimento_cadastrar.php' method='post' onsubmit='return validarAtendimento()'>";
+    echo "<form action='/api/index.php' method='post' onsubmit='return validarAtendimento()'>";
     echo "<div class='mb-3'>";
     echo "<label for='codigo' class='form-label'>Código</label>";
     echo "<input type='text' class='form-control' id='codigo' name='codigo' required>";
@@ -75,7 +75,7 @@ require_once("conexao.php");
     }
     echo "</select>";
     echo "</div>";
-    echo "<button type='submit' class='btn btn-primary'>Cadastrar</button> ";
+    echo "<button type='submit' name='pagina' value='atendimento_cadastrar' class='btn btn-primary'>Cadastrar</button> ";
     echo "<a href='/index.html' class='btn btn-secondary'>Voltar</a>";
     echo "</form>";
     ?>

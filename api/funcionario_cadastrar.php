@@ -20,7 +20,7 @@ require_once("conexao.php");
       <a class="nav-link text-white" href="/pages/cliente/cadastro.html">Clientes</a>
       <a class="nav-link text-white" href="/pages/funcionario/cadastro.html">Funcionários</a>
       <a class="nav-link text-white" href="/pages/animal/cadastro.html">Animais</a>
-      <a class="nav-link text-white" href="/api/atendimento_cadastro.php">Atendimentos</a>
+      <a class="nav-link text-white" href="/api/index.php?pagina=atendimento_cadastro">Atendimentos</a>
     </div>
   </nav>
 
@@ -32,7 +32,7 @@ require_once("conexao.php");
       <a href="/pages/funcionario/consulta.html">Consulta</a>
       <a href="/pages/funcionario/alteracao.html">Alteração</a>
       <a href="/pages/funcionario/remocao.html">Remoção</a>
-      <a href="/api/funcionario_relatorio.php">Relatório</a>
+      <a href="/api/index.php?pagina=funcionario_relatorio">Relatório</a>
     </p>
 
     <?php
