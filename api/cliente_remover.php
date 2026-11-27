@@ -28,6 +28,7 @@ require_once("conexao.php");
 
 
     <?php
+    $confirmando = false;
     if (isset($_POST["cpf"])) {
       $sql = $db->prepare("select * from cliente where cpf = ?");
       $sql->execute(array($_POST["cpf"]));
@@ -48,6 +49,7 @@ require_once("conexao.php");
               echo "<p class='text-danger'>Falha ao remover o cliente.</p>";
           }
           else {
+            $confirmando = true;
             echo "<p>Confira os dados antes de remover:</p>";
             echo "<table class='table table-bordered'>";
             echo "<tr><th>Nome</th><th>Telefone</th><th>E-mail</th><th>RG</th><th>CPF</th></tr>";
@@ -61,7 +63,7 @@ require_once("conexao.php");
             echo "</table>";
             echo "<form action='/api/index.php?pagina=cliente_remover&amp;confirmar=sim' method='post'>";
             echo "<button type='submit' name='cpf' value='" . htmlspecialchars($linha->cpf) . "' class='btn btn-danger'>Confirmar remoção</button> ";
-            echo "<a href='/pages/cliente/remocao.html' class='btn btn-secondary'>Cancelar</a>";
+            echo "<a href='/api/index.php?pagina=cliente_relatorio' class='btn btn-secondary'>Cancelar</a>";
             echo "</form>";
           }
         }
@@ -75,8 +77,12 @@ require_once("conexao.php");
     }
     ?>
 
-    <a href="/pages/cliente/remocao.html" class="btn btn-primary">Nova remoção</a>
-    <a href="/index.html" class="btn btn-secondary">Voltar</a>
+    <?php
+    if ($confirmando == false) {
+      echo "<a href='/pages/cliente/remocao.html' class='btn btn-primary'>Nova remoção</a> ";
+      echo "<a href='/index.html' class='btn btn-secondary'>Voltar</a>";
+    }
+    ?>
   </div>
 
   <?php require("rodape.php"); ?>
