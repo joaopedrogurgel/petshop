@@ -60,7 +60,7 @@ require_once("conexao.php");
         echo "</div>";
         echo "<div class='mb-3'>";
         echo "<label for='carga' class='form-label'>Carga horária semanal (h)</label>";
-        echo "<input type='number' class='form-control' id='carga' name='carga' value='" . htmlspecialchars($linha->carga_horaria) . "' required>";
+        echo "<input type='number' class='form-control' id='carga' name='carga' min='1' max='44' value='" . htmlspecialchars($linha->carga_horaria) . "' required>";
         echo "</div>";
         echo "<button type='submit' name='pagina' value='funcionario_alterar' class='btn btn-primary'>Salvar</button> ";
         echo "<a href='/pages/funcionario/alteracao.html' class='btn btn-secondary'>Voltar</a>";
