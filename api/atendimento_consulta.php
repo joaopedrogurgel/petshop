@@ -13,16 +13,7 @@ require_once("conexao.php");
 </head>
 <body>
 
-  <nav class="navbar navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/index.html">Petshop</a>
-      <a class="nav-link text-white" href="/index.html">Início</a>
-      <a class="nav-link text-white" href="/pages/cliente/cadastro.html">Clientes</a>
-      <a class="nav-link text-white" href="/pages/funcionario/cadastro.html">Funcionários</a>
-      <a class="nav-link text-white" href="/pages/animal/cadastro.html">Animais</a>
-      <a class="nav-link text-white" href="/api/index.php?pagina=atendimento_cadastro">Atendimentos</a>
-    </div>
-  </nav>
+  <?php require("menu.php"); ?>
 
   <div class="container mt-4">
     <h1>Consultar Atendimento</h1>
@@ -67,9 +58,7 @@ require_once("conexao.php");
     <a href="/index.html" class="btn btn-secondary">Voltar</a>
   </div>
 
-  <footer class="text-center mt-5">
-    <p>Programação de Sistemas Web - Software para Gerenciamento de Petshop</p>
-  </footer>
+  <?php require("rodape.php"); ?>
 
 </body>
 </html>
