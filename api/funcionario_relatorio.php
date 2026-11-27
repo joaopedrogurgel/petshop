@@ -69,7 +69,7 @@ require_once("conexao.php");
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="5">Total: <?php echo $total; ?> funcionários</td>
+          <td colspan="5">Total: <?php if ($total == 1) echo "1 funcionário"; else echo $total . " funcionários"; ?></td>
         </tr>
       </tfoot>
     </table>

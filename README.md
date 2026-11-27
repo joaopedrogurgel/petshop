@@ -39,7 +39,7 @@ Os dados ficam salvos no banco. Não é possível remover um cliente, funcionár
 - `css/style.css`: estilos próprios
 - `api/index.php`: entrada única do PHP, que inclui o script da página pedida
 - `api/conexao.php`: conexão com o banco (dados lidos das variáveis de ambiente)
-- `api/criar_tabelas.php`: criação das tabelas
+- `api/criar_tabelas.php`: comandos de criação das tabelas (não fica acessível pelo site)
 - `api/*_cadastrar.php`, `*_consulta.php`, `*_alterar.php`, `*_remover.php`, `*_relatorio.php`: operações de cada entidade
 
 ## Como executar

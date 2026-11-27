@@ -37,7 +37,6 @@ switch ($pagina) {
     case "atendimento_alterar":
     case "atendimento_remover":
     case "atendimento_relatorio":
-    case "criar_tabelas":
         require($pagina . ".php");
         break;
     default:
