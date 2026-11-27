@@ -53,11 +53,11 @@ require_once("conexao.php");
         echo "</table>";
       }
       else {
-        echo "<p>Nenhum animal encontrado com o nome " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum animal encontrado com o nome " . htmlspecialchars($_GET["busca"]) . ".</p>";
       }
     }
     else {
-      echo "<p>Informe o nome na página de consulta.</p>";
+      echo "<p class='text-danger'>Informe o nome na página de consulta.</p>";
     }
     ?>
 

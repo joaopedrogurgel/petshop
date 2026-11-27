@@ -40,19 +40,19 @@ require_once("conexao.php");
       $sql = $db->prepare("select * from atendimento where codigo = ?");
       $sql->execute(array($_POST["codigo"]));
       if ($sql->fetch()) {
-        echo "<p>Já existe um atendimento cadastrado com o código " . htmlspecialchars($_POST["codigo"]) . ".</p>";
+        echo "<p class='text-danger'>Já existe um atendimento cadastrado com o código " . htmlspecialchars($_POST["codigo"]) . ".</p>";
       }
       else {
         $sql = $db->prepare("insert into atendimento (codigo, data, cpf_cliente, nome_animal, matricula_funcionario) values (?, ?, ?, ?, ?)");
         $res = $sql->execute(array($_POST["codigo"], $_POST["data"], $_POST["cliente"], $_POST["animal"], $_POST["funcionario"]));
         if ($res)
-          echo "<p>Atendimento " . htmlspecialchars($_POST["codigo"]) . " cadastrado com sucesso!</p>";
+          echo "<p class='text-success'>Atendimento " . htmlspecialchars($_POST["codigo"]) . " cadastrado com sucesso!</p>";
         else
-          echo "<p>Falha ao cadastrar o atendimento.</p>";
+          echo "<p class='text-danger'>Falha ao cadastrar o atendimento.</p>";
       }
     }
     else {
-      echo "<p>Nenhum dado recebido do formulário.</p>";
+      echo "<p class='text-danger'>Nenhum dado recebido do formulário.</p>";
     }
     ?>
 

@@ -44,23 +44,23 @@ require_once("conexao.php");
         $sql = $db->prepare("select * from atendimento where nome_animal = ?");
         $sql->execute(array($_POST["nome"]));
         if ($sql->fetch()) {
-          echo "<p>O animal " . htmlspecialchars($linha->nome) . " possui atendimentos cadastrados e não pode ser removido.</p>";
+          echo "<p class='text-danger'>O animal " . htmlspecialchars($linha->nome) . " possui atendimentos cadastrados e não pode ser removido.</p>";
         }
         else {
           $sql = $db->prepare("delete from animal where nome = ?");
           $res = $sql->execute(array($_POST["nome"]));
           if ($res)
-            echo "<p>Animal " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
+            echo "<p class='text-success'>Animal " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
           else
-            echo "<p>Falha ao remover o animal.</p>";
+            echo "<p class='text-danger'>Falha ao remover o animal.</p>";
         }
       }
       else {
-        echo "<p>Nenhum animal encontrado com o nome " . htmlspecialchars($_POST["nome"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum animal encontrado com o nome " . htmlspecialchars($_POST["nome"]) . ".</p>";
       }
     }
     else {
-      echo "<p>Nenhum dado recebido do formulário.</p>";
+      echo "<p class='text-danger'>Nenhum dado recebido do formulário.</p>";
     }
     ?>
 

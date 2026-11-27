@@ -44,23 +44,23 @@ require_once("conexao.php");
         $sql = $db->prepare("select * from atendimento where matricula_funcionario = ?");
         $sql->execute(array($_POST["matricula"]));
         if ($sql->fetch()) {
-          echo "<p>O funcionário " . htmlspecialchars($linha->nome) . " possui atendimentos cadastrados e não pode ser removido.</p>";
+          echo "<p class='text-danger'>O funcionário " . htmlspecialchars($linha->nome) . " possui atendimentos cadastrados e não pode ser removido.</p>";
         }
         else {
           $sql = $db->prepare("delete from funcionario where matricula = ?");
           $res = $sql->execute(array($_POST["matricula"]));
           if ($res)
-            echo "<p>Funcionário " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
+            echo "<p class='text-success'>Funcionário " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
           else
-            echo "<p>Falha ao remover o funcionário.</p>";
+            echo "<p class='text-danger'>Falha ao remover o funcionário.</p>";
         }
       }
       else {
-        echo "<p>Nenhum funcionário encontrado com a matrícula " . htmlspecialchars($_POST["matricula"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum funcionário encontrado com a matrícula " . htmlspecialchars($_POST["matricula"]) . ".</p>";
       }
     }
     else {
-      echo "<p>Nenhum dado recebido do formulário.</p>";
+      echo "<p class='text-danger'>Nenhum dado recebido do formulário.</p>";
     }
     ?>
 

@@ -45,23 +45,23 @@ require_once("conexao.php");
         $sql = $db->prepare("select * from atendimento where cpf_cliente = ?");
         $sql->execute(array($_POST["cpf"]));
         if ($sql->fetch()) {
-          echo "<p>O cliente " . htmlspecialchars($linha->nome) . " possui atendimentos cadastrados e não pode ser removido.</p>";
+          echo "<p class='text-danger'>O cliente " . htmlspecialchars($linha->nome) . " possui atendimentos cadastrados e não pode ser removido.</p>";
         }
         else {
           $sql = $db->prepare("delete from cliente where cpf = ?");
           $res = $sql->execute(array($_POST["cpf"]));
           if ($res)
-            echo "<p>Cliente " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
+            echo "<p class='text-success'>Cliente " . htmlspecialchars($linha->nome) . " removido com sucesso!</p>";
           else
-            echo "<p>Falha ao remover o cliente.</p>";
+            echo "<p class='text-danger'>Falha ao remover o cliente.</p>";
         }
       }
       else {
-        echo "<p>Nenhum cliente encontrado com o CPF " . htmlspecialchars($_POST["cpf"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum cliente encontrado com o CPF " . htmlspecialchars($_POST["cpf"]) . ".</p>";
       }
     }
     else {
-      echo "<p>Nenhum dado recebido do formulário.</p>";
+      echo "<p class='text-danger'>Nenhum dado recebido do formulário.</p>";
     }
     ?>
 

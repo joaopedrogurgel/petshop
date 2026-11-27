@@ -94,12 +94,12 @@ require_once("conexao.php");
         echo "</form>";
       }
       else {
-        echo "<p>Nenhum atendimento encontrado com o código " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum atendimento encontrado com o código " . htmlspecialchars($_GET["busca"]) . ".</p>";
         echo "<a href='/pages/atendimento/alteracao.html' class='btn btn-secondary'>Voltar</a>";
       }
     }
     else {
-      echo "<p>Informe o código na página de alteração.</p>";
+      echo "<p class='text-danger'>Informe o código na página de alteração.</p>";
     }
     ?>
   </div>

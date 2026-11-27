@@ -67,12 +67,12 @@ require_once("conexao.php");
         echo "</form>";
       }
       else {
-        echo "<p>Nenhum funcionário encontrado com a matrícula " . htmlspecialchars($_GET["busca"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum funcionário encontrado com a matrícula " . htmlspecialchars($_GET["busca"]) . ".</p>";
         echo "<a href='/pages/funcionario/alteracao.html' class='btn btn-secondary'>Voltar</a>";
       }
     }
     else {
-      echo "<p>Informe a matrícula na página de alteração.</p>";
+      echo "<p class='text-danger'>Informe a matrícula na página de alteração.</p>";
     }
     ?>
   </div>

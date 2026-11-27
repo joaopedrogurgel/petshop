@@ -43,16 +43,16 @@ require_once("conexao.php");
         $sql = $db->prepare("delete from atendimento where codigo = ?");
         $res = $sql->execute(array($_POST["codigo"]));
         if ($res)
-          echo "<p>Atendimento " . htmlspecialchars($_POST["codigo"]) . " removido com sucesso!</p>";
+          echo "<p class='text-success'>Atendimento " . htmlspecialchars($_POST["codigo"]) . " removido com sucesso!</p>";
         else
-          echo "<p>Falha ao remover o atendimento.</p>";
+          echo "<p class='text-danger'>Falha ao remover o atendimento.</p>";
       }
       else {
-        echo "<p>Nenhum atendimento encontrado com o código " . htmlspecialchars($_POST["codigo"]) . ".</p>";
+        echo "<p class='text-danger'>Nenhum atendimento encontrado com o código " . htmlspecialchars($_POST["codigo"]) . ".</p>";
       }
     }
     else {
-      echo "<p>Nenhum dado recebido do formulário.</p>";
+      echo "<p class='text-danger'>Nenhum dado recebido do formulário.</p>";
     }
     ?>
 
