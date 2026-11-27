@@ -34,23 +34,23 @@
     <form action="/api/index.php" method="post" onsubmit="return validarFuncionario()">
       <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome" required>
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex.: João Souza" required>
       </div>
       <div class="mb-3">
         <label for="matricula" class="form-label">Matrícula</label>
-        <input type="text" class="form-control" id="matricula" name="matricula" required>
+        <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Ex.: 2024001" required>
       </div>
       <div class="mb-3">
         <label for="qualificacao" class="form-label">Qualificação</label>
-        <input type="text" class="form-control" id="qualificacao" name="qualificacao" required>
+        <input type="text" class="form-control" id="qualificacao" name="qualificacao" placeholder="Ex.: Veterinário" required>
       </div>
       <div class="mb-3">
         <label for="descricao" class="form-label">Descrição da função</label>
-        <textarea class="form-control" id="descricao" name="descricao" rows="3" required></textarea>
+        <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Ex.: Atende consultas e aplica vacinas" required></textarea>
       </div>
       <div class="mb-3">
         <label for="carga" class="form-label">Carga horária semanal (h)</label>
-        <input type="number" class="form-control" id="carga" name="carga" min="1" max="44" required>
+        <input type="number" class="form-control" id="carga" name="carga" min="1" max="44" placeholder="Entre 1 e 44" required>
       </div>
       <button type="submit" name="pagina" value="funcionario_cadastrar" class="btn btn-primary">Cadastrar</button>
       <a href="../../index.html" class="btn btn-secondary">Voltar</a>
