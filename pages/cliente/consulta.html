@@ -34,7 +34,7 @@
     <form action="/api/index.php" method="get">
       <div class="mb-3">
         <label for="busca" class="form-label">CPF do cliente</label>
-        <input type="text" class="form-control" id="busca" name="busca" required>
+        <input type="text" class="form-control" id="busca" name="busca" pattern="[0-9]{11}" placeholder="Somente números (11 dígitos)" required>
       </div>
       <button type="submit" name="pagina" value="cliente_consulta" class="btn btn-primary">Consultar</button>
       <a href="../../index.html" class="btn btn-secondary">Voltar</a>

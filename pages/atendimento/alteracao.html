@@ -34,7 +34,7 @@
     <form action="/api/index.php" method="get">
       <div class="mb-3">
         <label for="busca" class="form-label">Código do atendimento</label>
-        <input type="text" class="form-control" id="busca" name="busca" required>
+        <input type="text" class="form-control" id="busca" name="busca" pattern="[0-9]{4}" placeholder="4 dígitos (ex.: 0001)" required>
       </div>
       <button type="submit" name="pagina" value="atendimento_alteracao" class="btn btn-primary">Buscar</button>
       <a href="../../index.html" class="btn btn-secondary">Voltar</a>

@@ -39,7 +39,7 @@ require_once("conexao.php");
     echo "<form action='/api/index.php' method='post' onsubmit='return validarAtendimento()'>";
     echo "<div class='mb-3'>";
     echo "<label for='codigo' class='form-label'>Código</label>";
-    echo "<input type='text' class='form-control' id='codigo' name='codigo' required>";
+    echo "<input type='text' class='form-control' id='codigo' name='codigo' pattern='[0-9]{4}' placeholder='4 dígitos (ex.: 0001)' required>";
     echo "</div>";
     echo "<div class='mb-3'>";
     echo "<label for='data' class='form-label'>Data</label>";
